@@ -1,29 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Server, Cpu, Globe2, Users } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 const features = [
     {
-        icon: <Server className="w-8 h-8 text-mission-blue" />,
-        title: "Orbital Systems",
-        description: "Hands-on workshops on satellite telemetry, ground station operations, and remote sensing protocols.",
+        image: "/team/MEETtheTEAM.png",
+        title: "Team Behind GRSS",
+        description: "A dedicated group of students passionate about remote sensing and geoscience.",
     },
     {
-        icon: <Cpu className="w-8 h-8 text-white" />,
-        title: "Neural Networks",
-        description: "Deep learning models for analyzing multi-spectral imagery and predicting planetary changes.",
+        image: "/team/Events HIGHLIGHTS.png",
+        title: "Events Highlights",
+        description: "Workshops, hackathons, and seminars fostering innovation in Earth observation.",
     },
     {
-        icon: <Globe2 className="w-8 h-8 text-mission-blue" />,
-        title: "Global Intelligence",
-        description: "Access to international datasets and collaborative research initiatives across the IEEE network.",
+        image: "/team/BOXFAculty.png",
+        title: "Faculty Coordinator",
+        description: "Guided by expert faculty mentorship to bridge the gap between academia and industry.",
     },
     {
-        icon: <Users className="w-8 h-8 text-white" />,
-        title: "Crew Assembly",
-        description: "Connect with elite engineers, researchers, and industry veterans in the aerospace sector.",
+        image: "/team/MEETGB.jpeg",
+        title: "Meet the GB",
+        description: "The governing body ensuring the chapter's vision and mission are upheld.",
     },
 ];
 
@@ -39,13 +38,13 @@ export default function ValueProps() {
                     <div>
                         <div className="mb-16">
                             <div className="inline-block border border-white/10 bg-white/5 px-3 py-1 mb-4">
-                                <span className="font-mono text-xs uppercase tracking-[0.3em] text-stone-400">System Modules</span>
+                                <span className="font-mono text-xs uppercase tracking-[0.3em] text-stone-400">Chapter Overview</span>
                             </div>
                             <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter mb-4">
-                                Advanced <br /> <span className="text-mission-blue">Capabilities</span>
+                                About <br /> <span className="text-mission-blue">GRSS</span>
                             </h2>
                             <p className="text-stone-400 max-w-md leading-relaxed">
-                                Our platform offers a comprehensive suite of tools for geospatial analysis and satellite operations.
+                                Explore our community, leadership, and the events that define our mission in advancing Earth observation.
                             </p>
                         </div>
 
@@ -59,10 +58,16 @@ export default function ValueProps() {
                                     viewport={{ once: true }}
                                 >
                                     <SpotlightCard className="h-full bg-stone-900/50 border border-white/10 group rounded-none">
-                                        <div className="p-8 relative z-20 h-full flex flex-col">
-                                            <div className="mb-6 bg-white/5 w-14 h-14 flex items-center justify-center border border-white/10 group-hover:border-mission-blue/50 transition-colors">
-                                                {feature.icon}
+                                        <div className="p-6 relative z-20 h-full flex flex-col">
+                                            {/* Image Container */}
+                                            <div className="mb-6 relative w-full h-40 overflow-hidden rounded-md border border-white/10 group-hover:border-mission-blue/50 transition-colors">
+                                                <img
+                                                    src={feature.image}
+                                                    alt={feature.title}
+                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                                />
                                             </div>
+
                                             <h3 className="mb-3 text-xl font-bold uppercase tracking-wide group-hover:text-mission-blue transition-colors">
                                                 {feature.title}
                                             </h3>

@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ValueProps from "@/components/ValueProps";
+import FacultyAdvisor from "@/components/FacultyAdvisor";
 import Stats from "@/components/Stats";
 import Projects from "@/components/Projects";
 import Events from "@/components/Events";
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <SatelliteCanvas />
       <ValueProps />
+      <FacultyAdvisor />
       <Stats />
       <Projects />
       <Events />
