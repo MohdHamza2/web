@@ -151,12 +151,14 @@ export default function Projects() {
                             layoutId={`card-${selectedProject.id}`}
                             className="relative w-full max-w-2xl bg-stone-900 border border-white/10 overflow-hidden z-20 flex flex-col max-h-[85vh]"
                         >
-                            <div className="relative aspect-video flex-shrink-0">
+                            {/* Event Image - Shorter/Cropped */}
+                            <div className="relative h-48 md:h-64 w-full shrink-0">
                                 <img
                                     src={selectedProject.image}
                                     alt={selectedProject.title}
                                     className="w-full h-full object-cover object-top"
                                 />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
                                 <button
                                     onClick={() => setSelectedProject(null)}
                                     className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/80 text-white rounded-full transition-colors"

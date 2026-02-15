@@ -5,7 +5,11 @@ import { ArrowRight, Globe, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DecryptedText } from "@/components/ui/decrypted-text";
 
+import { useLaunch } from "@/context/LaunchContext";
+
 export default function Hero() {
+    const { isLaunched } = useLaunch();
+
     return (
         <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-space-black">
             {/* Realistic Starfield Background */}
@@ -24,26 +28,26 @@ export default function Hero() {
                     {/* Mission Badge */}
                     <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 mb-10 backdrop-blur-sm">
                         <div className="w-2 h-2 bg-mission-blue rounded-full animate-pulse" />
-                        <span className="font-mono text-xs tracking-[0.2em] text-starlight uppercase">Mission Status: Active</span>
+                        <span className="font-mono text-xs tracking-[0.2em] text-starlight uppercase">Chapter Site: Active</span>
                     </div>
 
-                    <h1 className="text-6xl md:text-8xl font-display font-bold leading-[0.9] mb-8 tracking-tighter text-white uppercase">
-                        <DecryptedText text="Orbital" speed={50} animateOnView={true} /> <br />
+                    <h1 className="text-5xl md:text-7xl font-display font-bold leading-[1.1] mb-8 tracking-tighter text-white uppercase">
+                        <DecryptedText key={isLaunched ? "title1-launched" : "title1-wait"} text="IEEE GRSS" speed={50} animateOnView={true} /> <br />
                         <span className="text-mission-blue">
-                            <DecryptedText text="Intelligence" speed={60} animateOnView={true} />
+                            <DecryptedText key={isLaunched ? "title2-launched" : "title2-wait"} text="MJCET CHAPTER" speed={60} animateOnView={true} />
                         </span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-stone-400 mb-12 max-w-lg leading-relaxed font-light tracking-wide">
-                        Deciphering planetary signals. The IEEE GRSS Student Chapter is an elite collective of engineers advancing earth observation technology.
+                        Exploring Earth Through Data & Remote Sensing. The IEEE GRSS Student Chapter is a collective of innovators, engineers, and researchers advancing geoscience, earth observation, and intelligent sensing technologies.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-6">
                         <Button size="lg" className="bg-white text-black hover:bg-stone-200 font-bold text-sm uppercase tracking-widest h-14 px-10 rounded-none transition-all duration-300">
-                            Launch Protocol <ArrowRight className="w-4 h-4 ml-2" />
+                            ESTABLISHED <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
                         <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5 font-mono text-xs h-14 px-10 rounded-none uppercase tracking-widest transition-all duration-300">
-                            Flight Manifest
+                            NOV 2024
                         </Button>
                     </div>
 
@@ -52,11 +56,11 @@ export default function Hero() {
                             <div className="text-3xl font-display font-bold text-white mb-1">
                                 <DecryptedText text="T-Minus" speed={100} />
                             </div>
-                            <div className="font-mono text-xs text-stone-500 uppercase tracking-wider">Next Event</div>
+                            <div className="font-mono text-xs text-stone-500 uppercase tracking-wider">Upcoming Events</div>
                         </div>
                         <div>
                             <div className="text-3xl font-display font-bold text-white mb-1">405km</div>
-                            <div className="font-mono text-xs text-stone-500 uppercase tracking-wider">Orbit Altitude</div>
+                            <div className="font-mono text-xs text-stone-500 uppercase tracking-wider">Details</div>
                         </div>
                     </div>
                 </motion.div>

@@ -7,10 +7,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import Magnetic from "@/components/ui/magnetic";
 
 const navLinks = [
-    { name: "Mission", href: "#" },
-    { name: "Telemetry", href: "#projects" },
-    { name: "Timeline", href: "#events" },
-    { name: "Crew", href: "#team" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#about-grss" },
+    { name: "Events", href: "/events" },
+    { name: "Team", href: "/team" },
+    { name: "Resources", href: "/resources" },
 ];
 
 export default function Navbar() {
@@ -32,13 +33,24 @@ export default function Navbar() {
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-4 group">
-                    <div className="w-10 h-10 border-2 border-white flex items-center justify-center bg-white text-black font-bold font-display text-lg tracking-tighter">
-                        GE
-                    </div>
-                    <div className="flex flex-col">
+                    <motion.div layoutId="chapter-logo-container" className="relative">
+                        <motion.img
+                            layoutId="chapter-logo"
+                            src="/team/Logo_transparent.png"
+                            alt="IEEE GRSS Logo"
+                            className="w-12 h-12 object-contain"
+                            transition={{ type: "spring", stiffness: 50, damping: 20 }}
+                        />
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5, duration: 0.8 }}
+                        className="flex flex-col"
+                    >
                         <span className="font-display font-bold text-lg tracking-widest text-white uppercase leading-none">IEEE GRSS</span>
                         <span className="font-mono text-xs text-stone-400 tracking-[0.2em] uppercase leading-none mt-1">Student Chapter</span>
-                    </div>
+                    </motion.div>
                 </Link>
 
                 {/* Desktop Nav - Technical Text */}

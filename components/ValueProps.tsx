@@ -28,7 +28,7 @@ const features = [
 
 export default function ValueProps() {
     return (
-        <section className="py-32 bg-space-black relative overflow-hidden min-h-screen flex items-center">
+        <section id="about-grss" className="py-32 bg-space-black relative overflow-hidden min-h-screen flex items-center">
             {/* Tech Grid Background */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
 
