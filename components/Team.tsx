@@ -36,8 +36,19 @@ export default function Team() {
         <section id="team" className="py-32 bg-space-black border-t border-white/10">
             <div className="container mx-auto px-6">
                 <div className="flex items-center justify-between mb-20">
-                    <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-tight">GOVERNING BODY</h2>
-                    <div className="w-20 h-1 bg-white" />
+                    <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tight relative group cursor-default w-fit">
+                        {/* Text with subtle gradient (no blue shift) */}
+                        <span className="bg-gradient-to-r from-white via-stone-200 to-stone-500 bg-clip-text text-transparent transition-all duration-500 ease-out">
+                            GOVERNING BODY
+                        </span>
+
+                    </h2>
+                    <div className="flex flex-col items-end">
+                        <div className="h-px w-32 bg-mission-blue mb-4" />
+                        <p className="font-mono text-xs uppercase tracking-widest text-stone-500 text-right">
+                            Tenure 2025-26
+                        </p>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-6">

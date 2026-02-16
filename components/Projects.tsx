@@ -9,7 +9,7 @@ const projects = [
     {
         id: "01",
         title: "CODE QUAKE",
-        category: "Hackathon",
+        category: "Event",
         status: "Completed",
         image: "/team/Codequake.jpeg",
         details: (

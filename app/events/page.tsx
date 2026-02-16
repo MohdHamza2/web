@@ -54,7 +54,7 @@ export default function EventsPage() {
 
             {/* STELLAR-X Event */}
             <EventSection
-                title="STELLAR-X — First Mission"
+                title="STELLAR-X"
                 date="13 November 2025"
                 venue="Room 1406, Block 1, MJCET"
                 duration="9:30 AM – 3:30 PM"
@@ -140,6 +140,46 @@ export default function EventsPage() {
                 ]}
                 groupPhoto="/industri/group_picture.jpeg"
                 instagramEmbedUrl="https://www.instagram.com/reel/DUoIRElDWFl/"
+            />
+
+            {/* ASHA KIRAN Event */}
+            <EventSection
+                title="ASHA KIRAN — Outreach Initiative"
+                date="19–20 January 2026"
+                venue="Grace Model High School"
+                duration="Two Day Initiative"
+                type="Outreach Program & Awareness Drive"
+                about={[
+                    "ASHA KIRAN was a two-day outreach initiative by IEEE GRSS MJCET aimed at promoting environmental awareness and introducing school students to climate science and geospatial technologies.",
+                    "The program combined creativity, academic sessions, and interactive discussions to make topics like climate change, air pollution, and technology-driven environmental monitoring accessible to young learners."
+                ]}
+                focusAreas={[
+                    "Poster Presentation Competition",
+                    "Climate Impact Awareness",
+                    "Air Quality Monitoring Tech",
+                    "Geoinformatics & AI Basics"
+                ]}
+                outcomes={[
+                    "Awareness of climate challenges",
+                    "Understanding of pollution & sustainability",
+                    "Insight into geospatial tech",
+                    "Encouragement toward science"
+                ]}
+                participation={[
+                    { label: "Students Engaged", count: 90 },
+                    { label: "GRSS Volunteers", count: 5 }
+                ]}
+                galleryImages={[
+                    "/ashakir/againsit.jpeg",
+                    "/ashakir/sasta.jpeg",
+                    "/ashakir/scabd.jpeg",
+                    "/ashakir/sitting.jpeg",
+                    "/ashakir/umamam.jpeg",
+                    "/ashakir/why.jpeg",
+                    "/ashakir/win1.jpeg",
+                    "/ashakir/win2.jpeg"
+                ]}
+                groupPhoto="/ashakir/day1grp.jpeg"
             />
         </main>
     );

@@ -125,7 +125,7 @@ export default function LaunchSequence() {
                             {/* Main Title */}
                             <div className="mb-6 max-w-4xl px-4">
                                 <motion.h1
-                                    className="text-3xl md:text-5xl font-display font-bold tracking-widest uppercase text-shine"
+                                    className="text-3xl md:text-5xl font-display font-bold tracking-widest uppercase text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
                                     initial="hidden"
                                     animate="visible"
                                     variants={{

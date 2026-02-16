@@ -49,7 +49,7 @@ export default function Events() {
             ]
         },
         {
-            date: "NOV 30",
+            date: "30 NOV",
             year: "2025",
             title: "DATANYX Winners",
             details: [
@@ -77,6 +77,17 @@ export default function Events() {
                         <>
                             <p>The GRSS team — Kareem, Areebha, Usaid, Ilyas, and Sama — emerged as Runner-Up in the Tech Debate, competing among 16 clubs. This achievement celebrates not only knowledge and critical thinking, but also teamwork, confidence, and the power of ideas.</p>
                             <p className="mt-4">A proud moment for our chapter!</p>
+                        </>
+                    )
+                },
+                {
+                    image: "/team/areebhawin.jpeg",
+                    title: "Best Debater Award 🎤",
+                    description: (
+                        <>
+                            <strong className="text-mission-blue block mb-2">Exceptional Articulation & Reasoning</strong>
+                            <p>At the inter-club Tech Face Off debate event, Areebha was honored with the Best Debater Award for her exceptional articulation, analytical reasoning, and confident presentation.</p>
+                            <p className="mt-4">Competing among participants from multiple student chapters and technical clubs, her performance stood out for its clarity of thought, structured argumentation, and persuasive delivery.</p>
                         </>
                     )
                 }

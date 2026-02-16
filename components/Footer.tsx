@@ -86,10 +86,7 @@ export default function Footer() {
 
                 <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-stone-600 font-mono text-[10px] uppercase tracking-widest">
                     <p>© 2026 IEEE GRSS Student Chapter. All Systems Nominal.</p>
-                    <div className="flex gap-8 mt-4 md:mt-0">
-                        <a href="#" className="hover:text-white transition-colors">Privacy Protocol</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms of Engagement</a>
-                    </div>
+
                 </div>
             </div>
         </footer>
