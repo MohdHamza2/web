@@ -1,5 +1,6 @@
-import { Github, Linkedin, Twitter, Mail, Radio, Instagram } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Radio, Instagram, MessageCircle } from "lucide-react";
 import Link from "next/link";
+import { DecryptedText } from "@/components/ui/decrypted-text";
 
 export default function Footer() {
     return (
@@ -28,22 +29,39 @@ export default function Footer() {
 
                     <div className="md:col-span-2">
                         <h4 className="font-mono text-xs text-white uppercase tracking-widest mb-6 border-b border-white/10 pb-2 inline-block">Index</h4>
-                        <ul className="space-y-3 text-stone-400 font-mono text-xs uppercase tracking-wider">
-                            <li><Link href="/#about-grss" className="hover:text-mission-blue transition-colors">About</Link></li>
-                            <li><Link href="/events" className="hover:text-mission-blue transition-colors">Events</Link></li>
-                            <li><Link href="/team" className="hover:text-mission-blue transition-colors">Team</Link></li>
-                            <li><Link href="/resources" className="hover:text-mission-blue transition-colors">Resources</Link></li>
+                        <ul className="space-y-3 text-stone-400 font-mono text-sm uppercase tracking-wider">
+                            <li>
+                                <Link href="/#about-grss" className="hover:text-mission-blue transition-all duration-300 hover:scale-110 origin-left block w-fit">
+                                    <DecryptedText text="About" animateOnView={true} speed={40} className="" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/events" className="hover:text-mission-blue transition-all duration-300 hover:scale-110 origin-left block w-fit">
+                                    <DecryptedText text="Events" animateOnView={true} speed={40} className="" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/team" className="hover:text-mission-blue transition-all duration-300 hover:scale-110 origin-left block w-fit">
+                                    <DecryptedText text="Team" animateOnView={true} speed={40} className="" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/resources" className="hover:text-mission-blue transition-all duration-300 hover:scale-110 origin-left block w-fit">
+                                    <DecryptedText text="Resources" animateOnView={true} speed={40} className="" />
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
                     <div className="md:col-span-5">
-                        <h4 className="font-mono text-xs text-white uppercase tracking-widest mb-6 border-b border-white/10 pb-2 inline-block">Comms Array</h4>
+                        <h4 className="font-mono text-xs text-white uppercase tracking-widest mb-6 border-b border-white/10 pb-2 inline-block">Social Uplink</h4>
                         <div className="grid grid-cols-2 gap-4 mb-8">
                             {[
                                 { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/ieee-grss-mjcet/" },
                                 { icon: Twitter, label: "X", href: "https://x.com/ieeegrssmjcet?s=21&t=A80UVpD9QpREYvmJRssJxg" },
                                 { icon: Github, label: "GitHub", href: "#" },
                                 { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/ieeegrssmjcet?igsh=MWU5MHV5Ym14OXV5cw==" },
+                                { icon: MessageCircle, label: "WhatsApp", href: "https://chat.whatsapp.com/K5SgKXOeH36BxdvdYSVZ9k" },
                                 { icon: Mail, label: "Email", href: "mailto:ieeegrssmjcet@gmail.com" }
                             ].map((item, i) => (
                                 <a
@@ -60,6 +78,9 @@ export default function Footer() {
                                 </a>
                             ))}
                         </div>
+                        <p className="text-stone-400 font-mono text-[10px] uppercase tracking-wider leading-relaxed border-t border-white/10 pt-4 mt-8">
+                            Join our community channel and follow our feeds for the latest mission updates.
+                        </p>
                     </div>
                 </div>
 

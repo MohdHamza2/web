@@ -68,8 +68,8 @@ export default function Hero() {
                 {/* Cinematic Visual - Realistic Earth & Satellite */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.5, delay: 0.2 }}
+                    animate={{ opacity: isLaunched ? 1 : 0, scale: isLaunched ? 1 : 0.9 }}
+                    transition={{ duration: 2, delay: 1 }}
                     className="relative hidden lg:flex items-center justify-center h-[800px] pointer-events-none perspective-1000"
                 >
                     {/* Earth Sphere Container */}

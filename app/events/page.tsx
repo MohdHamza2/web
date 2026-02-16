@@ -1,20 +1,146 @@
+import EventSection from "@/components/EventSection";
+
 export default function EventsPage() {
     return (
-        <main className="min-h-screen bg-navy-900 text-white pt-32 pb-20 px-6">
-            <div className="container mx-auto">
+        <main className="min-h-screen bg-black text-white">
+            {/* Header Section */}
+            <div className="pt-32 pb-10 px-6 container mx-auto">
                 <h1 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter mb-8 text-center">
                     Events <span className="text-mission-blue">Organized</span>
                 </h1>
-                <p className="text-center text-stone-400 max-w-2xl mx-auto mb-16">
-                    Exploring the frontiers of geoscience through workshops, hackathons, and industrial visits.
+                <p className="text-center text-stone-400 max-w-3xl mx-auto mb-16 leading-relaxed">
+                    Our chapter actively conducts technical workshops, hands-on sessions, and industry engagements designed to bridge theoretical learning with real-world geoscience and remote sensing applications.
                 </p>
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center text-stone-500 py-20 border border-white/10 rounded-lg bg-white/5">
-                    <div className="col-span-full">
-                        <p className="font-mono text-sm uppercase tracking-widest">Awaiting Data Uplink...</p>
-                    </div>
-                </div>
             </div>
+
+            {/* CODE-QUAKE Event */}
+            <EventSection
+                title="CODE-QUAKE"
+                date="18 September 2025"
+                venue="Room 1406, Block 1, MJCET"
+                duration="9:30 AM – 3:00 PM"
+                type="Technical Workshop & Hands-on Session"
+                about={[
+                    "CODE-QUAKE was designed to transform beginner-level programming into an interactive, application-driven learning experience. The workshop introduced participants to Python fundamentals, logical problem solving, and rapid web application development using Streamlit.",
+                    "Rather than focusing solely on theory, the event emphasized practical implementation through a disaster-impact simulation exercise, demonstrating how computational thinking can be applied to real-world scenarios."
+                ]}
+                focusAreas={[
+                    "Python Programming Fundamentals",
+                    "Logical & Algorithmic Thinking",
+                    "Streamlit Web App Development",
+                    "Disaster Simulation & Modeling"
+                ]}
+                outcomes={[
+                    "Foundational understanding of Python",
+                    "Improved logical reasoning & problem solving",
+                    "Exposure to Streamlit for rapid prototyping",
+                    "Practical insight into simulation workflows"
+                ]}
+                participation={[
+                    { label: "IEEE Members", count: 18 },
+                    { label: "Non-IEEE Participants", count: 65 }
+                ]}
+                galleryImages={[
+                    "/codequake/Abd.jpeg",
+                    "/codequake/Zain.jpeg",
+                    "/codequake/abdM.jpeg",
+                    "/codequake/saa.jpeg",
+                    "/codequake/saad.jpeg",
+                    "/codequake/win.jpeg"
+                ]}
+                groupPhoto="/codequake/grpphoto.jpeg"
+                instagramEmbedUrl="https://www.instagram.com/reel/DPTL68WjvhP/"
+            />
+
+            {/* STELLAR-X Event */}
+            <EventSection
+                title="STELLAR-X — First Mission"
+                date="13 November 2025"
+                venue="Room 1406, Block 1, MJCET"
+                duration="9:30 AM – 3:30 PM"
+                type="AI & Deep Learning Workshop"
+                about={[
+                    "STELLAR-X was a technical awareness and skill-building workshop focused on artificial intelligence applications in image recognition and deep learning. The event introduced students to Python data workflows, machine learning concepts, and Convolutional Neural Networks (CNNs).",
+                    "Through a structured progression of sessions and a guided hands-on project, participants explored how intelligent models interpret visual data and recognize complex patterns."
+                ]}
+                focusAreas={[
+                    "Python & Data Handling",
+                    "Machine Learning Concepts",
+                    "Image Datasets & CNN Fundamentals",
+                    "Practical Deep Learning Workflows"
+                ]}
+                outcomes={[
+                    "Understanding of ML & CNN principles",
+                    "Insight into dataset preparation & structure",
+                    "Practical exposure to model behavior",
+                    "Confidence in AI-based workflows"
+                ]}
+                participation={[
+                    { label: "IEEE Members", count: 32 },
+                    { label: "Non-IEEE Participants", count: 45 }
+                ]}
+                galleryImages={[
+                    "/Stellerx/abd22.jpeg",
+                    "/Stellerx/againblack.jpeg",
+                    "/Stellerx/areebha.jpeg",
+                    "/Stellerx/audicar.jpeg",
+                    "/Stellerx/audiee.jpeg",
+                    "/Stellerx/black.jpeg",
+                    "/Stellerx/giff.jpeg",
+                    "/Stellerx/kareem33.jpeg",
+                    "/Stellerx/laptop.jpeg",
+                    "/Stellerx/wth.jpeg"
+                ]}
+                groupPhoto="/Stellerx/grouppic.jpeg"
+                instagramEmbedUrl="https://www.instagram.com/reel/DSdUqG9k0Mk/"
+            />
+
+            {/* NRSC Visit Event */}
+            <EventSection
+                title="INDUSTRIAL VISIT — NRSC"
+                date="17 November 2025"
+                venue="National Remote Sensing Centre (NRSC)"
+                duration="Full Day Engagement"
+                type="Academic-Industry Engagement"
+                about={[
+                    "The industrial visit to NRSC provided students with first-hand exposure to India’s space-based Earth observation capabilities. Participants explored real-world remote sensing systems, satellite data workflows, and geospatial applications supporting national development.",
+                    "The visit bridged classroom learning with operational technologies, offering valuable perspective on geoscience, satellite imaging, and data-driven decision-making."
+                ]}
+                focusAreas={[
+                    "Satellite Systems Demo",
+                    "Earth Observation Workflows",
+                    "Expert Sessions",
+                    "Geospatial Applications"
+                ]}
+                outcomes={[
+                    "Satellite & sensing system demonstrations",
+                    "Earth observation data workflows",
+                    "Expert interaction & knowledge sessions",
+                    "Real-world remote sensing applications"
+                ]}
+                participation={[
+                    { label: "IEEE Members", count: 76 },
+                    { label: "Non-IEEE Participants", count: 61 }
+                ]}
+                galleryImages={[
+                    "/industri/Ashfhaq.jpeg",
+                    "/industri/againabd.jpeg",
+                    "/industri/diance.jpeg",
+                    "/industri/dusra_globe.jpeg",
+                    "/industri/globe.jpeg",
+                    "/industri/objects.jpeg",
+                    "/industri/phirsypicM.jpeg",
+                    "/industri/robot.jpeg",
+                    "/industri/rocket.jpeg",
+                    "/industri/satellite.jpeg",
+                    "/industri/semi.jpeg",
+                    "/industri/sideaudi.jpeg",
+                    "/industri/speech.jpeg",
+                    "/industri/uma.jpeg"
+                ]}
+                groupPhoto="/industri/group_picture.jpeg"
+                instagramEmbedUrl="https://www.instagram.com/reel/DUoIRElDWFl/"
+            />
         </main>
     );
 }

@@ -35,7 +35,7 @@ export default function LaunchSequence() {
             const timer = setTimeout(() => {
                 setLaunched(true);
                 setPhase("COMPLETED");
-            }, 4000); // 4 seconds for reading text
+            }, 9000); // 9 seconds to allow keywords to fully appear
             return () => clearTimeout(timer);
         }
     }, [phase, setLaunched]);
@@ -122,14 +122,39 @@ export default function LaunchSequence() {
                             </motion.div>
 
                             {/* Main Title */}
-                            <motion.h1
-                                initial={{ y: 20, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.3, duration: 0.8 }}
-                                className="text-3xl md:text-5xl font-display font-bold text-white tracking-widest mb-6 uppercase max-w-4xl"
-                            >
-                                <span className="text-mission-blue">IEEE</span> Geoscience and Remote Sensing Society
-                            </motion.h1>
+                            {/* Main Title */}
+                            <div className="mb-6 max-w-4xl px-4">
+                                <motion.h1
+                                    className="text-3xl md:text-5xl font-display font-bold tracking-widest uppercase text-shine"
+                                    initial="hidden"
+                                    animate="visible"
+                                    variants={{
+                                        hidden: { opacity: 0 },
+                                        visible: {
+                                            opacity: 1,
+                                            transition: {
+                                                staggerChildren: 0.08,
+                                                delayChildren: 0.5
+                                            }
+                                        }
+                                    }}
+                                >
+                                    {/* Split text into characters for reveal */}
+                                    {Array.from("IEEE Geoscience and Remote Sensing Society").map((char, index) => (
+                                        <motion.span
+                                            key={index}
+                                            variants={{
+                                                hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+                                                visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+                                            }}
+                                            transition={{ duration: 1.2, ease: "easeOut" }}
+                                            className="inline-block"
+                                        >
+                                            {char === " " ? "\u00A0" : char}
+                                        </motion.span>
+                                    ))}
+                                </motion.h1>
+                            </div>
 
                             {/* Keywords Staggered */}
                             <motion.div
@@ -139,7 +164,7 @@ export default function LaunchSequence() {
                                     hidden: { opacity: 0 },
                                     visible: {
                                         opacity: 1,
-                                        transition: { staggerChildren: 0.4, delayChildren: 0.8 }
+                                        transition: { staggerChildren: 0.4, delayChildren: 5.5 }
                                     }
                                 }}
                                 className="flex flex-col md:flex-row gap-4 md:gap-8 font-mono text-sm md:text-lg text-stone-400 uppercase tracking-widest"
