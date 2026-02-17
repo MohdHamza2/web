@@ -1,6 +1,13 @@
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowDown } from "lucide-react";
 import EventSection from "@/components/EventSection";
+import PastEvents from "@/components/PastEvents";
 
 export default function EventsPage() {
+    const [showPastEvents, setShowPastEvents] = useState(false);
     return (
         <main className="min-h-screen bg-black text-white">
             {/* Header Section */}
@@ -41,14 +48,14 @@ export default function EventsPage() {
                     { label: "Non-IEEE Participants", count: 65 }
                 ]}
                 galleryImages={[
-                    "/codequake/Abd.jpeg",
-                    "/codequake/Zain.jpeg",
-                    "/codequake/abdM.jpeg",
-                    "/codequake/saa.jpeg",
-                    "/codequake/saad.jpeg",
-                    "/codequake/win.jpeg"
+                    "/CODequake/Abd.jpeg",
+                    "/CODequake/Zain.jpeg",
+                    "/CODequake/abdM.jpeg",
+                    "/CODequake/saa.jpeg",
+                    "/CODequake/saad.jpeg",
+                    "/CODequake/win.jpeg"
                 ]}
-                groupPhoto="/codequake/grpphoto.jpeg"
+                groupPhoto="/CODequake/grpphoto.jpeg"
                 instagramEmbedUrl="https://www.instagram.com/reel/DPTL68WjvhP/"
             />
 
@@ -181,6 +188,36 @@ export default function EventsPage() {
                 ]}
                 groupPhoto="/ashakir/day1grp.jpeg"
             />
+
+            {/* Past Events Toggle Section */}
+            <div className="py-20 bg-black flex flex-col items-center justify-center border-t border-white/10">
+                {!showPastEvents ? (
+                    <div className="text-center px-6">
+                        <h2 className="text-2xl md:text-3xl font-display font-bold uppercase text-white mb-6">
+                            Constructing the Legacy
+                        </h2>
+                        <p className="text-stone-400 max-w-2xl mx-auto mb-8 font-mono text-sm">
+                            Discover the events and milestones that laid the foundation for our chapter's growth.
+                        </p>
+                        <button
+                            onClick={() => setShowPastEvents(true)}
+                            className="px-8 py-4 bg-white/5 border border-white/10 rounded-full hover:bg-mission-blue hover:text-white hover:border-mission-blue transition-all duration-300 font-mono text-sm uppercase tracking-widest flex items-center gap-3 group"
+                        >
+                            <span>Explore Past Events</span>
+                            <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+                        </button>
+                    </div>
+                ) : (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="w-full"
+                    >
+                        <PastEvents />
+                    </motion.div>
+                )}
+            </div>
         </main>
     );
 }

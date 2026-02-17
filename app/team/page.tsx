@@ -1,9 +1,50 @@
 "use client";
 
-import { Palette, FileText, CalendarDays, Megaphone, Camera, Cpu } from "lucide-react";
+import { useState } from "react";
+import { Palette, FileText, CalendarDays, Megaphone, Camera, Cpu, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function TeamPage() {
+    const [showPastGB, setShowPastGB] = useState(false);
+
+    const pastGBMembers = [
+        {
+            name: "Mir Nabeel Uddin",
+            role: "Chairperson",
+            description: "Leading chapter vision, activities, and foundational initiatives during the inaugural tenure.",
+            image: "/PastGB/nabeelchair.jpeg"
+        },
+        {
+            name: "Insiya Maryam",
+            role: "Vice Chairperson",
+            description: "Supporting chapter operations, coordination, and technical engagement.",
+            image: "/PastGB/insiyavice.jpeg"
+        },
+        {
+            name: "Mirfath Fathima",
+            role: "Treasurer",
+            description: "Managing financial planning and resource allocation for chapter activities.",
+            image: "/PastGB/MirfathTreasurer.jpeg"
+        },
+        {
+            name: "Bilal Hussain",
+            role: "Secretary",
+            description: "Handling chapter documentation, communication, and organizational processes.",
+            image: "/PastGB/Bilalsecretary.jpeg"
+        },
+        {
+            name: "Mohammed Adil",
+            role: "Web Master",
+            description: "Managing digital platforms and contributing to the chapter’s online presence.",
+            image: "/PastGB/adilwebmastre.jpeg"
+        },
+        {
+            name: "Zoha Mussadaq",
+            role: "Social Media Coordinator",
+            description: "Overseeing outreach, promotions, and community engagement through digital channels.",
+            image: "/PastGB/zohasocial.jpeg"
+        }
+    ];
     const portfolios = [
         {
             title: "Design Team",
@@ -262,6 +303,81 @@ export default function TeamPage() {
                                 </div>
                             </motion.div>
                         ))}
+                    </motion.div>
+                </section>
+
+                {/* PAST TENURE GB Section (Toggle) */}
+                <section className="mt-32 pb-20 border-t border-white/10 pt-20 relative overflow-hidden bg-stone-950/50">
+                    {/* Background Texture - Increased Opacity */}
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
+                    <div className="flex flex-col items-center text-center relative z-10">
+                        <button
+                            onClick={() => setShowPastGB(!showPastGB)}
+                            className="group flex items-center gap-4 px-8 py-4 bg-white/5 border border-white/10 rounded-full hover:bg-mission-blue/10 hover:border-mission-blue/50 transition-all duration-300"
+                        >
+                            <span className="font-mono text-sm uppercase tracking-widest text-stone-300 group-hover:text-mission-blue transition-colors">
+                                {showPastGB ? "Hide" : "View"} Past Tenure Governing Body (2024-25)
+                            </span>
+                            <ChevronDown className={`w-4 h-4 text-stone-400 group-hover:text-mission-blue transition-transform duration-300 ${showPastGB ? "rotate-180" : ""}`} />
+                        </button>
+                    </div>
+
+                    <motion.div
+                        initial={false}
+                        animate={{ height: showPastGB ? "auto" : 0, opacity: showPastGB ? 1 : 0 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pt-16 pb-8 relative max-w-5xl mx-auto">
+                            <p className="text-center text-stone-400 max-w-2xl mx-auto mb-12 text-sm md:text-base leading-relaxed px-4">
+                                The 2024–2025 Governing Body represents the founding leadership of IEEE GRSS MJCET, whose dedication and vision established the chapter’s early initiatives, events, and technical culture. Their contributions laid the groundwork for the chapter’s continued growth and success.
+                            </p>
+
+                            {/* Gradient Masks for Marquee fade effect */}
+                            <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-navy-900 to-transparent pointer-events-none" />
+                            <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-navy-900 to-transparent pointer-events-none" />
+
+                            <div className="flex overflow-hidden group/marquee">
+                                <motion.div
+                                    className="flex gap-6 pl-6"
+                                    animate={{ x: ["0%", "-50%"] }}
+                                    transition={{
+                                        repeat: Infinity,
+                                        ease: "linear",
+                                        duration: 30, // Adjust speed here
+                                    }}
+                                    whileHover={{ animationPlayState: "paused" }} // Note: Framer motion doesn't support playState directly like this, using hover to pause requires state or CSS. 
+                                // Alternative: using standard CSS animation for simpler pause-on-hover or sticking to continuous flow.
+                                // Let's use a simpler Framer Motion approach but without easy pause. 
+                                // Actually, for user experience, let's keep it simple: Continuous loop.
+                                >
+                                    {/* Duplicate list for seamless loop */}
+                                    {[...pastGBMembers, ...pastGBMembers].map((member, index) => (
+                                        <div
+                                            key={index}
+                                            className="w-48 shrink-0 group bg-stone-900/50 border border-white/10 rounded-xl overflow-hidden hover:border-stone-500/50 transition-all duration-300"
+                                        >
+                                            <div className="aspect-[3/4] relative overflow-hidden">
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opactiy-80" />
+                                                <img
+                                                    src={member.image}
+                                                    alt={member.name}
+                                                    className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105"
+                                                />
+                                                <div className="absolute bottom-0 left-0 right-0 p-3 z-20">
+                                                    <div className="text-[9px] font-mono text-mission-blue uppercase tracking-widest mb-0.5">{member.role}</div>
+                                                    <h3 className="text-sm font-display font-bold text-white uppercase tracking-wide leading-tight">{member.name}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </motion.div>
+                            </div>
+
+                            <p className="text-center text-xs font-mono text-stone-600 mt-6 uppercase tracking-widest">
+                            // 2024-2025 Tenure
+                            </p>
+                        </div>
                     </motion.div>
                 </section>
             </div>

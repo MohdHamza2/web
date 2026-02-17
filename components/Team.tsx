@@ -1,33 +1,40 @@
+import { Linkedin } from "lucide-react";
+
 const team = [
     {
         name: "Mohammed Hadi Bilal",
         role: "Treasurer",
         image: "/team/Treasurer.jpeg",
-        description: "Managing financial resources to support our mission and events."
+        description: "Managing financial resources to support our mission and events.",
+        linkedin: "#"
     },
     {
         name: "Syed Afraaz Ashraf",
         role: "Vice Chairperson",
         image: "/team/vice chair.jpeg",
-        description: "Driving operational excellence and strategic initiatives for the chapter."
+        description: "Driving operational excellence and strategic initiatives for the chapter.",
+        linkedin: "#"
     },
     {
         name: "Abdullah Hussain Shaikh",
         role: "Chairperson",
         image: "/team/Chair.jpeg",
-        description: "Leading the chapter with vision, ensuring growth and impactful activities."
+        description: "Leading the chapter with vision, ensuring growth and impactful activities.",
+        linkedin: "#"
     },
     {
         name: "Nooren Fatima",
         role: "Secretary",
         image: "/team/SEcretary.jpeg",
-        description: "Coordinating communications and maintaining organizational efficiency."
+        description: "Coordinating communications and maintaining organizational efficiency.",
+        linkedin: "#"
     },
     {
         name: "Hamza Mohammed",
         role: "Web Master",
         image: "/team/webmaster.jpeg",
-        description: "Developing and maintaining our digital presence and technical platforms."
+        description: "Developing and maintaining our digital presence and technical platforms.",
+        linkedin: "#"
     },
 ];
 
@@ -69,6 +76,14 @@ export default function Team() {
                                 <p className="text-xs text-stone-400 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden">
                                     {member.description}
                                 </p>
+                                <a
+                                    href={member.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 text-stone-500 hover:text-mission-blue mt-2 transition-all duration-300 opacity-0 group-hover:opacity-100 h-0 group-hover:h-auto overflow-hidden"
+                                >
+                                    <Linkedin className="w-4 h-4" />
+                                </a>
                             </div>
                         </div>
                     ))}

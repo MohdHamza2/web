@@ -53,13 +53,25 @@ export default function Hero() {
 
                     <div className="mt-20 flex gap-12 border-t border-white/10 pt-8">
                         <div>
-                            <div className="text-3xl font-display font-bold text-white mb-1">
-                                <DecryptedText text="T-Minus" speed={100} />
+                            <div className="text-3xl font-display font-bold text-white mb-1 w-64 overflow-hidden mask-linear-fade">
+                                <motion.div
+                                    className="flex gap-4 whitespace-nowrap"
+                                    animate={{ x: "-50%" }}
+                                    transition={{
+                                        repeat: Infinity,
+                                        ease: "linear",
+                                        duration: 8,
+                                    }}
+                                >
+                                    <span>will be announced soon</span>
+                                    <span>will be announced soon</span>
+                                    <span>will be announced soon</span>
+                                </motion.div>
                             </div>
                             <div className="font-mono text-xs text-stone-500 uppercase tracking-wider">Upcoming Events</div>
                         </div>
                         <div>
-                            <div className="text-3xl font-display font-bold text-white mb-1">405km</div>
+                            <div className="text-3xl font-display font-bold text-white mb-1">--</div>
                             <div className="font-mono text-xs text-stone-500 uppercase tracking-wider">Details</div>
                         </div>
                     </div>

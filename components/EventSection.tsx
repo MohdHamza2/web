@@ -8,12 +8,12 @@ interface EventSectionProps {
     title: string;
     date: string;
     venue: string;
-    duration: string;
+    duration?: string;
     type: string;
     about: string[];
     focusAreas: string[];
     outcomes: string[];
-    participation: { label: string; count: number }[];
+    participation?: { label: string; count: number }[];
     galleryImages: string[];
     groupPhoto?: string;
     instagramEmbedUrl?: string;
@@ -170,24 +170,26 @@ export default function EventSection({
                             </motion.div>
 
                             {/* Participation Stats */}
-                            <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.2 }}
-                            >
-                                <h3 className="text-lg md:text-xl font-mono font-bold uppercase tracking-wide text-stone-400 mb-4 md:mb-6">
-                                    Participants
-                                </h3>
-                                <div className="grid grid-cols-2 gap-3 md:gap-4">
-                                    {participation.map((stat, i) => (
-                                        <div key={i} className="bg-black/40 border border-white/10 p-4 md:p-6 rounded text-center">
-                                            <div className="text-3xl md:text-4xl font-display font-bold text-white mb-1 md:mb-2">{stat.count}</div>
-                                            <div className="text-[10px] md:text-xs font-mono text-stone-500 uppercase tracking-widest">{stat.label}</div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </motion.div>
+                            {participation && (
+                                <motion.div
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.2 }}
+                                >
+                                    <h3 className="text-lg md:text-xl font-mono font-bold uppercase tracking-wide text-stone-400 mb-4 md:mb-6">
+                                        Participants
+                                    </h3>
+                                    <div className="grid grid-cols-2 gap-3 md:gap-4">
+                                        {participation.map((stat, i) => (
+                                            <div key={i} className="bg-black/40 border border-white/10 p-4 md:p-6 rounded text-center">
+                                                <div className="text-3xl md:text-4xl font-display font-bold text-white mb-1 md:mb-2">{stat.count}</div>
+                                                <div className="text-[10px] md:text-xs font-mono text-stone-500 uppercase tracking-widest">{stat.label}</div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            )}
                         </div>
                     </div>
 

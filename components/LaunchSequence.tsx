@@ -40,6 +40,24 @@ export default function LaunchSequence() {
         }
     }, [phase, setLaunched]);
 
+    // Lock Body Scroll During Launch
+    useEffect(() => {
+        if (!isLaunched) {
+            document.body.style.overflow = "hidden";
+            // Also lock html to prevent potential double scrollbars in some browsers
+            document.documentElement.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+            document.documentElement.style.overflow = "auto";
+        }
+
+        // Cleanup
+        return () => {
+            document.body.style.overflow = "auto";
+            document.documentElement.style.overflow = "auto";
+        };
+    }, [isLaunched]);
+
     if (phase === "COMPLETED") return null;
 
     return (
