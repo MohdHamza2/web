@@ -201,7 +201,7 @@ export default function EventsPage() {
                         </p>
                         <button
                             onClick={() => setShowPastEvents(true)}
-                            className="px-8 py-4 bg-white/5 border border-white/10 rounded-full hover:bg-mission-blue hover:text-white hover:border-mission-blue transition-all duration-300 font-mono text-sm uppercase tracking-widest flex items-center gap-3 group"
+                            className="mx-auto px-8 py-4 bg-white/5 border border-white/10 rounded-full hover:bg-mission-blue hover:text-white hover:border-mission-blue transition-all duration-300 font-mono text-sm uppercase tracking-widest flex items-center gap-3 group"
                         >
                             <span>Explore Past Events</span>
                             <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />

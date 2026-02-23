@@ -1,11 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
 export default function Events() {
     const [selectedAchievement, setSelectedAchievement] = useState<any>(null);
+
+    useEffect(() => {
+        if (selectedAchievement) {
+            document.documentElement.classList.add('no-scroll');
+        } else {
+            document.documentElement.classList.remove('no-scroll');
+        }
+        return () => {
+            document.documentElement.classList.remove('no-scroll');
+        };
+    }, [selectedAchievement]);
 
     const achievements = [
         {
@@ -102,22 +113,35 @@ export default function Events() {
 
                 <div className="border-t border-b border-white/10 divide-y divide-white/10">
                     {achievements.map((item, index) => (
-                        <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-8 py-8 items-center group hover:bg-white/5 transition-colors duration-300 px-4 -mx-4">
-                            {/* Date */}
-                            <div className="col-span-2 font-mono">
-                                <div className="text-2xl font-bold text-white uppercase">{item.date}</div>
-                                <div className="text-xs text-stone-500">{item.year}</div>
+                        <div key={index} className="flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-8 py-8 items-start md:items-center group hover:bg-white/5 transition-colors duration-300 px-4 -mx-4">
+                            {/* Date & Action Row for Mobile */}
+                            <div className="flex justify-between items-center w-full md:contents">
+                                {/* Date */}
+                                <div className="md:col-span-2 font-mono">
+                                    <div className="text-xl md:text-2xl font-bold text-white uppercase">{item.date}</div>
+                                    <div className="text-[10px] md:text-xs text-stone-500">{item.year}</div>
+                                </div>
+
+                                {/* Action - Visible on mobile row top */}
+                                <div className="md:hidden">
+                                    <button
+                                        onClick={() => setSelectedAchievement(item)}
+                                        className="border border-white/20 px-4 py-2 font-mono text-[10px] uppercase bg-white/5"
+                                    >
+                                        OPEN
+                                    </button>
+                                </div>
                             </div>
 
                             {/* Title */}
-                            <div className="col-span-8">
-                                <h3 className="text-2xl font-display font-medium group-hover:pl-4 transition-all duration-300 group-hover:text-mission-blue">
+                            <div className="md:col-span-8">
+                                <h3 className="text-xl md:text-2xl font-display font-medium group-hover:pl-4 transition-all duration-300 group-hover:text-mission-blue">
                                     {item.title}
                                 </h3>
                             </div>
 
-                            {/* Action */}
-                            <div className="col-span-2 text-right">
+                            {/* Action - Hidden on mobile, shown on desktop */}
+                            <div className="hidden md:block md:col-span-2 text-right">
                                 <button
                                     onClick={() => setSelectedAchievement(item)}
                                     className="inline-block border border-white/20 px-4 py-2 font-mono text-xs uppercase hover:bg-white hover:text-black cursor-pointer transition-all"

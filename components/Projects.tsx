@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, X } from "lucide-react";
 import { TiltCard } from "@/components/ui/tilt-card";
@@ -90,16 +90,27 @@ const projects = [
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
+    useEffect(() => {
+        if (selectedProject) {
+            document.documentElement.classList.add('no-scroll');
+        } else {
+            document.documentElement.classList.remove('no-scroll');
+        }
+        return () => {
+            document.documentElement.classList.remove('no-scroll');
+        };
+    }, [selectedProject]);
+
     return (
         <section id="projects" className="py-32 bg-space-black border-t border-dashed border-white/10 relative z-10">
             <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
                     <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter leading-none text-white">
                         Events <br /> <span className="text-stone-600">Organized</span>
                     </h2>
-                    <div className="flex flex-col items-end">
-                        <div className="h-px w-32 bg-mission-blue mb-4" />
-                        <p className="font-mono text-xs uppercase tracking-widest text-stone-500 text-right">
+                    <div className="flex flex-col items-start md:items-end w-full md:w-auto">
+                        <div className="h-px w-32 bg-mission-blue mb-4 hidden md:block" />
+                        <p className="font-mono text-xs uppercase tracking-widest text-stone-500 text-left md:text-right">
                             Fostering innovation <br /> through hands-on experience.
                         </p>
                     </div>
@@ -114,7 +125,7 @@ export default function Projects() {
                                     <img
                                         src={project.image}
                                         alt={project.title}
-                                        className="w-full h-full object-cover object-top opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                                        className="w-full h-full object-cover object-top opacity-60 grayscale-0 md:grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                                     />
                                     {/* Technical Overlay */}
                                     <div className="absolute top-4 left-4 font-mono text-[10px] text-white bg-black/50 backdrop-blur px-2 py-1 uppercase tracking-widest translate-z-20">

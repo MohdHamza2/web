@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { Palette, FileText, CalendarDays, Megaphone, Camera, Cpu, ChevronDown } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function TeamPage() {
     const [showPastGB, setShowPastGB] = useState(false);
+    const [expandedExecom, setExpandedExecom] = useState<number | null>(null);
+    const [expandedCore, setExpandedCore] = useState<number | null>(null);
 
     const pastGBMembers = [
         {
@@ -198,9 +200,9 @@ export default function TeamPage() {
                                 className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:border-mission-blue/30 relative overflow-hidden active:scale-[0.98]"
                             >
                                 {/* Hover Gradient Background */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-mission-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-mission-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                                <div className="relative z-10">
+                                <div className="relative z-10 flex flex-col h-full">
                                     <div className="flex items-center gap-4 mb-6">
                                         <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 group-hover:border-mission-blue group-hover:bg-mission-blue/20 transition-all shadow-[0_0_0_1px_rgba(255,255,255,0.05)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]">
                                             <portfolio.icon className="w-6 h-6 text-stone-400 group-hover:text-mission-blue transition-colors duration-300" />
@@ -210,16 +212,37 @@ export default function TeamPage() {
                                         </h3>
                                     </div>
 
-                                    <div className="space-y-3 pl-16 border-l border-white/10 ml-6 group-hover:border-mission-blue/30 transition-colors">
-                                        {/* Label */}
-                                        <div className="text-xs font-mono uppercase tracking-widest text-stone-500 mb-2">Team Leads</div>
+                                    <div className="flex-1 flex flex-col justify-end">
+                                        <AnimatePresence>
+                                            {expandedExecom === index && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className="space-y-3 pl-16 border-l border-white/10 ml-6 mb-6 group-hover:border-mission-blue/30 transition-colors">
+                                                        <div className="text-xs font-mono uppercase tracking-widest text-stone-500 mb-2">Team Leads</div>
+                                                        {portfolio.leads.map((lead, i) => (
+                                                            <div key={i} className="text-stone-300 font-medium group-hover:text-white transition-colors">
+                                                                {lead}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
 
-                                        {/* Names */}
-                                        {portfolio.leads.map((lead, i) => (
-                                            <div key={i} className="text-stone-300 font-medium group-hover:text-white transition-colors">
-                                                {lead}
-                                            </div>
-                                        ))}
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setExpandedExecom(expandedExecom === index ? null : index);
+                                            }}
+                                            className="w-full mt-2 py-3 bg-white/5 border border-white/10 rounded-xl font-mono text-[10px] uppercase tracking-widest text-stone-400 group-hover:text-white group-hover:border-mission-blue/50 transition-all flex items-center justify-center gap-2"
+                                        >
+                                            <span>{expandedExecom === index ? "Collapse" : "View Portfolio"}</span>
+                                            <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${expandedExecom === index ? "rotate-180" : ""}`} />
+                                        </button>
                                     </div>
                                 </div>
                             </motion.div>
@@ -277,9 +300,9 @@ export default function TeamPage() {
                                 className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:border-purple-500/30 relative overflow-hidden active:scale-[0.98]"
                             >
                                 {/* Hover Gradient Background */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                                <div className="relative z-10">
+                                <div className="relative z-10 flex flex-col h-full">
                                     <div className="flex items-center gap-4 mb-6">
                                         <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 group-hover:border-purple-500 group-hover:bg-purple-500/20 transition-all shadow-[0_0_0_1px_rgba(255,255,255,0.05)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]">
                                             <team.icon className="w-6 h-6 text-stone-400 group-hover:text-purple-400 transition-colors duration-300" />
@@ -289,16 +312,37 @@ export default function TeamPage() {
                                         </h3>
                                     </div>
 
-                                    <div className="space-y-3 pl-16 border-l border-white/10 ml-6 group-hover:border-purple-500/30 transition-colors">
-                                        {/* Label */}
-                                        <div className="text-xs font-mono uppercase tracking-widest text-stone-500 mb-2">Core Members</div>
+                                    <div className="flex-1 flex flex-col justify-end">
+                                        <AnimatePresence>
+                                            {expandedCore === index && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className="space-y-3 pl-16 border-l border-white/10 ml-6 mb-6 group-hover:border-purple-500/30 transition-colors">
+                                                        <div className="text-xs font-mono uppercase tracking-widest text-stone-500 mb-2">Core Members</div>
+                                                        {team.members.map((member, i) => (
+                                                            <div key={i} className="text-stone-300 font-medium group-hover:text-white transition-colors">
+                                                                {member}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
 
-                                        {/* Names */}
-                                        {team.members.map((member, i) => (
-                                            <div key={i} className="text-stone-300 font-medium group-hover:text-white transition-colors">
-                                                {member}
-                                            </div>
-                                        ))}
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setExpandedCore(expandedCore === index ? null : index);
+                                            }}
+                                            className="w-full mt-2 py-3 bg-white/5 border border-white/10 rounded-xl font-mono text-[10px] uppercase tracking-widest text-stone-400 group-hover:text-white group-hover:border-purple-500/50 transition-all flex items-center justify-center gap-2"
+                                        >
+                                            <span>{expandedCore === index ? "Collapse" : "View Portfolio"}</span>
+                                            <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${expandedCore === index ? "rotate-180" : ""}`} />
+                                        </button>
                                     </div>
                                 </div>
                             </motion.div>

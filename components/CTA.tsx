@@ -1,12 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, User, Building2, MessageSquare, X, Smartphone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function CTA() {
     const [isFormOpen, setIsFormOpen] = useState(false);
+
+    useEffect(() => {
+        if (isFormOpen) {
+            document.documentElement.classList.add('no-scroll');
+        } else {
+            document.documentElement.classList.remove('no-scroll');
+        }
+        return () => {
+            document.documentElement.classList.remove('no-scroll');
+        };
+    }, [isFormOpen]);
 
     return (
         <section className="py-32 relative overflow-hidden bg-space-black flex items-center justify-center min-h-[800px]">
@@ -25,13 +36,15 @@ export default function CTA() {
                         Reach out for partnerships, sponsorships, or to share your expertise.
                     </p>
 
-                    <Button
-                        onClick={() => setIsFormOpen(true)}
-                        size="lg"
-                        className="h-20 px-16 text-lg font-bold bg-mission-blue text-white hover:bg-mission-blue/80 uppercase tracking-widest rounded-none border border-mission-blue/50 shadow-[0_0_50px_rgba(59,130,246,0.3)] hover:shadow-[0_0_100px_rgba(59,130,246,0.6)] transition-all scale-100 hover:scale-105"
-                    >
-                        Initiate Collaboration
-                    </Button>
+                    <div className="flex justify-center">
+                        <Button
+                            onClick={() => setIsFormOpen(true)}
+                            size="lg"
+                            className="h-20 px-12 md:px-16 text-base md:text-lg font-bold bg-mission-blue text-white hover:bg-mission-blue/80 uppercase tracking-widest rounded-none border border-mission-blue/50 shadow-[0_0_50px_rgba(59,130,246,0.3)] hover:shadow-[0_0_100px_rgba(59,130,246,0.6)] transition-all scale-100 hover:scale-105"
+                        >
+                            Initiate Collaboration
+                        </Button>
+                    </div>
                 </div>
 
                 {/* Contact Details - Side by Side */}

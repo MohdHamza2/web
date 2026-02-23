@@ -16,7 +16,16 @@ export function AnimatedCounter({ value, direction = "up", className }: Animated
         damping: 100,
         stiffness: 100,
     });
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, margin: "-20px" });
+
+    useEffect(() => {
+        // Initial set to ensure "0" or initial value is visible before animation
+        if (ref.current) {
+            ref.current.textContent = Intl.NumberFormat("en-US").format(
+                direction === "down" ? value : 0
+            );
+        }
+    }, [direction, value]);
 
     useEffect(() => {
         if (isInView) {
@@ -27,7 +36,7 @@ export function AnimatedCounter({ value, direction = "up", className }: Animated
     useEffect(() => {
         const unsubscribe = springValue.on("change", (latest: number) => {
             if (ref.current) {
-                ref.current.textContent = Intl.NumberFormat("en-US").format(latest);
+                ref.current.textContent = Intl.NumberFormat("en-US").format(Math.floor(latest));
             }
         });
 

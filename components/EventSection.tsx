@@ -45,6 +45,18 @@ export default function EventSection({
         return () => clearInterval(interval);
     }, [galleryImages]);
 
+    // Scroll Lock for Gallery Modal
+    useEffect(() => {
+        if (showGallery) {
+            document.documentElement.classList.add('no-scroll');
+        } else {
+            document.documentElement.classList.remove('no-scroll');
+        }
+        return () => {
+            document.documentElement.classList.remove('no-scroll');
+        };
+    }, [showGallery]);
+
     return (
         <section className="py-8 px-4 md:px-6 flex justify-center">
             <div className="relative w-full max-w-4xl rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900 isolate">

@@ -39,7 +39,7 @@ export default function SatelliteCanvas() {
 
     return (
         <motion.div
-            className="fixed inset-0 z-40 pointer-events-none overflow-hidden"
+            className="fixed inset-0 z-40 pointer-events-none overflow-hidden hidden lg:block"
             initial={{ opacity: 0 }}
             animate={{ opacity: isLaunched ? 1 : 0 }}
             transition={{ duration: 2, delay: 1 }}
