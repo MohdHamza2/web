@@ -5,9 +5,9 @@ import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 const stats = [
     { label: "Active Members", value: 120 },
-    { label: "Workshops Hosted", value: 45 },
-    { label: "Research Projects", value: 12 },
-    { label: "Global Hackathons", value: 3 },
+    { label: "Events Hosted", value: 13 },
+    { label: "Reach", value: 10000 },
+    { label: "Participants", value: 500 },
 ];
 
 export default function Stats() {

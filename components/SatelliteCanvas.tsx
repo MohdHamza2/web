@@ -2,10 +2,12 @@
 
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { useState } from "react";
+import { useLaunch } from "@/context/LaunchContext";
 
 export default function SatelliteCanvas() {
     const { scrollY } = useScroll();
     const [isAnchored, setIsAnchored] = useState(false);
+    const { isLaunched } = useLaunch();
 
     // Scroll ranges:
     // 0 - 1000: Hero (Orbit -> Anchor)
@@ -36,7 +38,12 @@ export default function SatelliteCanvas() {
     });
 
     return (
-        <div className="fixed inset-0 z-40 pointer-events-none overflow-hidden">
+        <motion.div
+            className="fixed inset-0 z-40 pointer-events-none overflow-hidden hidden lg:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isLaunched ? 1 : 0 }}
+            transition={{ duration: 2, delay: 1 }}
+        >
             <motion.div
                 style={{
                     top: "50%", // Fixed vertical center source
@@ -72,6 +79,6 @@ export default function SatelliteCanvas() {
                     />
                 </motion.div>
             </motion.div>
-        </div>
+        </motion.div>
     );
 }

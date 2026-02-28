@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "Official website of the IEEE Geoscience and Remote Sensing Society Student Chapter.",
 };
 
+import LayoutWrapper from "@/components/LayoutWrapper";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-space-black text-white min-h-screen overflow-x-hidden selection:bg-mission-blue selection:text-white`}>
-        {children}
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );
