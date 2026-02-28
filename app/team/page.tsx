@@ -50,32 +50,50 @@ export default function TeamPage() {
     const portfolios = [
         {
             title: "Design Team",
-            leads: ["Ayesha Hania", "Anjum"],
+            leads: [
+                { name: "Ayesha Hania", image: "/execom/design ayesha.jpeg" },
+                { name: "Anjum", image: "/execom/design anjum.jpeg" }
+            ],
             icon: Palette
         },
         {
             title: "Documentation Team",
-            leads: ["Sama Noreen"],
+            leads: [
+                { name: "Sama Noreen", image: "/execom/Docs sama.jpeg" },
+                { name: "Ilyas", image: "/execom/docs ilyas.jpeg" }  // Added based on directory contents
+            ],
             icon: FileText
         },
         {
             title: "Events Team",
-            leads: ["Zainab Ahmed", "Mohammed Omair Ahmed"],
+            leads: [
+                { name: "Zainab Ahmed", image: "/execom/events zainab.jpeg" },
+                { name: "Mohammed Omair Ahmed", image: "/execom/events omair.jpeg" }
+            ],
             icon: CalendarDays
         },
         {
             title: "Marketing Team",
-            leads: ["Syed Irfan Ali", "Usaid Minhaj"],
+            leads: [
+                { name: "Syed Irfan Ali", image: "/execom/marketing irfan.jpeg" },
+                { name: "Usaid Minhaj", image: "/execom/marketing usaid.jpeg" }
+            ],
             icon: Megaphone
         },
         {
             title: "Media Team",
-            leads: ["Rayaan", "Saad"],
+            leads: [
+                { name: "Rayaan", image: "/execom/media rayyan.jpeg" },
+                { name: "Saad", image: "/execom/media saad.jpeg" }
+            ],
             icon: Camera
         },
         {
             title: "Technical Team",
-            leads: ["Aman"],
+            leads: [
+                { name: "Aman", image: "/execom/tech amaan.jpeg" },
+                { name: "Areebha", image: "/execom/tech areebha.jpeg" }
+            ],
             icon: Cpu
         }
     ];
@@ -108,7 +126,7 @@ export default function TeamPage() {
         },
         {
             title: "Technical Team",
-            members: ["Kareemullah", "Omer Hussain Shaikh", "Areebha"],
+            members: ["Kareemullah", "Omer Hussain Shaikh"],
             icon: Cpu
         }
     ];
@@ -191,13 +209,13 @@ export default function TeamPage() {
                         whileInView="visible"
                         viewport={{ once: true, margin: "-50px" }}
                         variants={staggerContainer}
-                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start"
                     >
                         {portfolios.map((portfolio, index) => (
                             <motion.div
                                 key={index}
                                 variants={fadeInUp}
-                                className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:border-mission-blue/30 relative overflow-hidden active:scale-[0.98]"
+                                className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:border-mission-blue/30 relative overflow-hidden"
                             >
                                 {/* Hover Gradient Background */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-mission-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -221,13 +239,20 @@ export default function TeamPage() {
                                                     exit={{ height: 0, opacity: 0 }}
                                                     className="overflow-hidden"
                                                 >
-                                                    <div className="space-y-3 pl-16 border-l border-white/10 ml-6 mb-6 group-hover:border-mission-blue/30 transition-colors">
-                                                        <div className="text-xs font-mono uppercase tracking-widest text-stone-500 mb-2">Team Leads</div>
-                                                        {portfolio.leads.map((lead, i) => (
-                                                            <div key={i} className="text-stone-300 font-medium group-hover:text-white transition-colors">
-                                                                {lead}
-                                                            </div>
-                                                        ))}
+                                                    <div className="space-y-4 pl-16 border-l border-white/10 ml-6 mb-6 group-hover:border-mission-blue/30 transition-colors">
+                                                        <div className="text-xs font-mono uppercase tracking-widest text-stone-500 mb-4">Team Leads</div>
+                                                        <div className="flex flex-col gap-4">
+                                                            {portfolio.leads.map((lead, i) => (
+                                                                <div key={i} className="flex flex-col items-center gap-3 group/lead">
+                                                                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-white/10 group-hover/lead:border-mission-blue transition-colors shrink-0 shadow-lg group-hover/lead:shadow-mission-blue/20">
+                                                                        <img src={lead.image} alt={lead.name} className="w-full h-full object-cover object-top scale-110" />
+                                                                    </div>
+                                                                    <div className="text-stone-300 font-medium group-hover/lead:text-white transition-colors text-center text-lg">
+                                                                        {lead.name}
+                                                                    </div>
+                                                                </div>
+                                                            ))}
+                                                        </div>
                                                     </div>
                                                 </motion.div>
                                             )}
@@ -291,13 +316,13 @@ export default function TeamPage() {
                         whileInView="visible"
                         viewport={{ once: true, margin: "-50px" }}
                         variants={staggerContainer}
-                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start"
                     >
                         {coreTeam.map((team, index) => (
                             <motion.div
                                 key={index}
                                 variants={fadeInUp}
-                                className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:border-purple-500/30 relative overflow-hidden active:scale-[0.98]"
+                                className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:border-purple-500/30 relative overflow-hidden"
                             >
                                 {/* Hover Gradient Background */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
